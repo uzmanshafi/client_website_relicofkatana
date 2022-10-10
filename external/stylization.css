@@ -1,0 +1,689 @@
+@font-face {
+    font-family: 'chiller font';
+    src: url('../assests/fonts/Chiller\ W02.woff2') format('woff');
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'chiller font', sans-serif;
+    scroll-behavior: smooth;
+}
+
+html
+{
+    background-color: #000000;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+
+.navbar
+{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.navbar__container
+{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px; 
+    
+}
+
+#nav__logo
+{
+    color: #bb3f3f;
+    font-size: 2rem;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    text-decoration: none;
+}
+
+#nav__logo img
+{
+    width: 25%;
+}
+
+.navbar__menu
+{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.nav__item
+{
+    /* height: 80px; */
+}
+
+.nav__links
+{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    font-weight: bolder;
+}
+
+.nav__links i
+{
+  color: white;
+}
+
+.nav__links:hover , .nav__links i:hover
+{
+    transition: all 0.8s ease-in-out;
+    color: #bb3f3f;
+}
+
+/* Navigation Bar Responsiveness*/
+
+@media screen and (max-width : 960px) 
+{
+    .navbar__container
+    {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        padding: 0;
+    }
+
+    .navbar__menu
+    {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background: rgb(34, 34, 34);
+    }
+
+    .navbar__container.active
+    {
+        background:#250c0c;
+        transition: all 0.4s ease-in;
+    }
+
+    .navbar__menu.active
+    {
+        background: rgb(14, 4, 4);
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 80vh;
+        font-size: 1.6rem;
+    }
+
+    #nav__logo
+    {
+        padding-left: 25px;
+    }
+
+    .navbar__toggle .bar
+    {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: white;
+    }
+
+    .nav__item
+    {
+        width: 100%;
+    }
+
+    .nav__links
+    {
+        text-align: center;
+        /* padding: 1rem; */
+        width: 100%;
+        display: table;
+    }
+
+    .nav__links i
+    {
+        font-size: 1.4rem;
+    }
+
+    #mobile-menu
+    {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+
+    .navbar__toggle .bar
+    {
+        display: block;
+        cursor: pointer;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2)
+    {
+        opacity: 0;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(1)
+    {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(3)
+    {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* End of Navigation Bar */
+
+/* Rain Effect */
+
+#rain-effect::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 300vh;
+    background: url('../assests/imgs/blood_rain.png');
+    animation: rain 0.3s linear infinite;
+    z-index: 1;
+}
+
+@keyframes rain 
+{
+
+    0%
+    {
+        background-position: 0 0;
+    }
+
+    100%
+    {
+        background-position: 30% 100%;
+    }
+    
+}
+
+/* End of Rain Effect */
+
+.sec__container .banner_wrapper 
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 30px;
+    
+}
+
+.sec__container h2
+{
+    color: #bb3f3f;
+}
+
+/* Home Section*/
+
+#home
+{
+    background-image: url('../assests/imgs/background_black_fade.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* height: calc(100vh - 80px); */
+    height: 100%;
+}
+
+.content-left
+{
+    width: 50%;
+    z-index: 2;
+}
+.content-right
+{
+    width: 50%;
+    transform: rotate(-60deg);
+}
+
+.hero-img
+{
+    max-width: 670px;
+    height: auto;
+    animation:  animate 5s ease-in-out infinite;
+}
+
+@keyframes animate
+  {
+      0%
+      {
+          transform: translateX(20px);
+      }
+      50%
+      {
+          transform: translateX(50px);
+      }
+      100%
+      {
+          transform: translateX(20px);
+      }
+  }
+
+
+.content-left h2
+{
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+.content-left p
+{
+    font-size: 1.6rem;
+    font-weight: 600;
+    max-width: 640px; 
+    color: white;
+    line-height: 140%;
+    margin: 30px 0;
+    text-align: justify;
+}
+
+.btn__main
+{
+    padding: 15px;
+    border-radius: 30px;
+    width: 150px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    background-color: rgba(41, 4, 10, 0.6);
+    color: white;
+    border: solid 4px;
+    border-color: #1f0c0c;
+    transition: 0.2s ease-in;
+}
+
+.btn__main:hover
+{
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #bb3f3f;
+    border-color: #bb3f3f;
+}
+
+/* End of Home Section */
+
+/* Tokenomics Section */
+
+#tax h2
+{
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.wrapper
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    z-index: 2;
+}
+
+.tax_card
+{
+    text-align: center;
+    margin: 20px;
+    padding: 30px 20px;
+    width: 20%;
+    /* height: 400px; */
+    background:linear-gradient(to bottom, #bb3f3f, rgb(53, 11, 11));
+    color: black;
+    border-radius: 20px;
+    transition: 0.4s ease-in;
+}
+
+.tax_card:hover
+{
+    transform: scale(1.1);
+}
+
+.tax_card h3
+{
+    font-size: 2rem;
+}
+
+.tax_card h2
+{
+    color: white;
+    font-size: 4rem;
+}
+
+.tax_card p
+{
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* End of Tokenomics Section */
+
+/* Plan Section */
+
+#plans h2
+{
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.wrapper
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    z-index: 2;
+}
+
+.plan_card
+{
+    text-align: center;
+    margin: 20px;
+    padding: 30px 20px;
+    width: 16%;
+    /* height: 400px; */
+    background-color: rgba(112, 112, 112, 0.1);
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    transition: 0.4s ease-in;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(194, 131, 131, 0.2);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.plan_card:hover
+{
+    transform: scale(1.1);
+}
+
+.plan_card h3
+{
+    font-size: 2rem;
+    color: #bb3f3f;
+
+}
+
+.plan_card p
+{
+    font-size: 1rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+/* End of Tokenomics Section */
+
+/* Roadmap Section */
+
+#roadmap
+{
+    background:linear-gradient(to bottom, #000000 20%, #bb3f3f);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 70px;
+}
+
+#roadmap h2
+{
+    font-size: 4rem;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.map_card
+{
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    height: 400px;
+    background:linear-gradient(to bottom, #020202, rgb(27, 27, 27));
+    color: black;
+    border-radius: 20px;
+    transition: 0.4s ease-in;
+}
+
+.map_card:hover
+{
+    transform: scale(1.1);
+}
+
+.map_card h3
+{
+    color: white;
+    font-size: 2rem;
+}
+.map_card p
+{
+    text-align: left;
+    color: #bb3f3f;
+    margin: 4px;
+    padding: 4px;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+
+.myFooter
+{
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    height: 150px;
+    width: 100vw;
+    padding-top: 40px;
+    background-color: #0f0d0d;
+    flex-direction: column;
+}
+
+.myFooter p
+{
+    text-align: center;
+}
+
+.socials__links
+{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.socials__links i
+{
+    color: #bb3f3f;
+    margin: 1rem 2rem;
+}
+
+.socials__links i:hover
+{
+    transform: scale(1.2);
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+/* reveal sections*/
+.reveal
+{
+    position: relative;
+    transform:  translateY(150px);
+    opacity: 0;
+}
+
+.reveal.active
+{
+    transition: 0.6s ease-in;
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+/* responsiveness */
+
+@media screen and (max-width : 1000px)
+{
+
+    .content-left
+    {
+        width: 100%;
+    }
+    .content-right
+    {
+        width: 100%;
+    }
+
+    #rain-effect::before
+    {
+        visibility: hidden;
+    }
+
+    .hero-img
+    {
+        visibility: hidden;
+        display: none;
+    }
+
+    div#home {
+        height: auto;
+    }
+
+    #tax
+    {
+        margin: 30px 0;
+    }
+
+    #tax .titles
+    {
+        margin-top: 100px;
+    }
+
+    .tax_card
+    {
+        width: 43%;
+        /* height: 330px; */
+    }
+
+    .tax_card p
+    {
+        font-size: 1.2rem;
+    }
+
+    #plans
+    {
+        margin: 30px 0;
+    }
+
+    #plans .titles
+    {
+        margin-top: 100px;
+    }
+
+    .plan_card
+    {
+        width: 43%;
+        /* height: 330px; */
+    }
+
+    .plan_card p
+    {
+        font-size: 1.2rem;
+    }
+
+}
+
+@media screen and (max-width : 768px)
+{
+    .map_card{
+        width: 45%;
+    }
+    #tax .titles
+    {
+        margin-top: 70px;
+    }
+
+    #plans .titles
+    {
+        margin-top: 70px;
+    }
+
+    .content-left h2 {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width : 600px)
+{
+    html
+    {
+        overflow-x: hidden;
+    }
+
+    .wrapper
+    {
+        width: 100%;
+    }
+    .tax_card
+    {
+        width: 90%;
+    }
+
+    .plan_card
+    {
+        width: 90%;
+    }
+
+    .map_card{
+        width: 90%;
+    }
+    .content-left h2 {
+        font-size: 3rem;
+    }
+}
